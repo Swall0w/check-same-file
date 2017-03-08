@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import os
 import os.path
 
@@ -12,15 +13,19 @@ def main():
 
     filedict1 = get_file_volume(filedir1,filelist1)
     filedict2 = get_file_volume(filedir2,filelist2)
-    print(filedict1)
 
-    for k, v in filedict1.items():
-        print(k,v)
-
-    for k in filedict1.keys():
-        print('key: ', k)
-
-    for v in filedict1.values():
-        print('value: ', v)
+    for key1, value1 in filedict1.items():
+        if value1 in filedict2.values():
+            print("Maybe {filename} is duplicated.".format(filename=key1))
+#
+#    for k, v in filedict1.items():
+#        print(k, v)
+#
+#    for k in filedict1.keys():
+#        print('key: ', k)
+#
+#    for v in filedict1.values():
+#        print('value: ', v)
+#
 if __name__ == '__main__':
     main()
