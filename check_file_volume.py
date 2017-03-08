@@ -14,7 +14,13 @@ def main():
     filedict2 = get_file_volume(filedir2,filelist2)
     print(filedict1)
 
+    for k, v in filedict1.items():
+        print(k,v)
 
+    for k in filedict1.keys():
+        print('key: ', k)
 
+    for v in filedict1.values():
+        print('value: ', v)
 if __name__ == '__main__':
     main()
