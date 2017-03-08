@@ -1,13 +1,9 @@
 import os
 import os.path
 
-def get_file_volume(filedir):
-    filedict = {}
-    filevolumelist = []
-    for item in filelist1:
-        filedict[item] = os.path.getsize(filedir+item)
-        filevolumelist.append(filedict)
-    return filevolumelist
+def get_file_volume(filedir,filelist):
+    filedict = {item : os.path.getsize(filedir+item) for item in filelist}
+    return filedict
 
 def main():
     filedir1 = 'csvdatav1/'
@@ -15,8 +11,9 @@ def main():
     filelist1 = os.listdir(filedir1)
     filelist2 = os.listdir(filedir2)
 
-    filedict1 = get_file_volume(filedir1)
-    filedict2 = get_file_volume(filedir2)
+    filedict1 = get_file_volume(filedir1,filelist1)
+    filedict2 = get_file_volume(filedir2,filelist2)
+    print(filedict1)
 
 
 
