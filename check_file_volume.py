@@ -2,8 +2,7 @@ import os
 import os.path
 
 def get_file_volume(filedir,filelist):
-    filedict = {item : os.path.getsize(filedir+item) for item in filelist}
-    return filedict
+    return {item : os.path.getsize(filedir+item) for item in filelist}
 
 def main():
     filedir1 = 'csvdatav1/'
