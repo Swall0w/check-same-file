@@ -1,9 +1,13 @@
 # -*- coding: utf-8 -*-
 import os
 import os.path
+import hashlib
 
 def get_file_volume(filedir,filelist):
     return {item : os.path.getsize(filedir+item) for item in filelist}
+
+def get_file_md5(filedir, filelist):
+    pass
 
 def check_overlappedfile_by_filesize():
     filedir1 = 'csvdatav1/'
