@@ -17,8 +17,8 @@ def get_file_md5(filepath):
     return  md5.hexdigest()
 
 def check_overlappedfile_by_filesize():
-    filedir1 = 'csvdatav1/'
-    filedir2 = 'csvdatav2/'
+    filedir1 = 'datav1/'
+    filedir2 = 'datav2/'
 
     filedict1 = add_file_value(get_file_md5, filedir1)
     filedict2 = add_file_value(get_file_md5, filedir2)
@@ -26,7 +26,7 @@ def check_overlappedfile_by_filesize():
     for key1, value1 in filedict1.items():
         for key2, value2 in filedict2.items():
             if value1 == value2:
-                print("Maybe {file1} in csvdatav1 is duplicated as {file2} in csvdatav2.".format(\
+                print("Maybe {file1} in datav1 is duplicated as {file2} in datav2.".format(\
                 file1=key1, file2=key2))
                 os.remove(filedir2+key2)
 
