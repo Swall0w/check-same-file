@@ -3,25 +3,25 @@ import os
 import os.path
 import hashlib
 
-def add_file_value(func,filedir):
+def add_file_value(func, filedir):
     return {item : func(filedir+item) for item in os.listdir(filedir)}
 
-def get_filesize(filepath):
+def with_filesize(filepath):
     return os.path.getsize(filepath)
 
-def get_file_md5(filepath):
+def with_md5(filepath):
     md5 = hashlib.md5()
     with open(filepath, 'rb') as f:
         for chunk in iter(lambda: f.read(2048 * md5.block_size), b''):
             md5.update(chunk)
     return  md5.hexdigest()
 
-def check_overlappedfile_by_filesize():
+def check_duplicate_files():
     filedir1 = 'datav1/'
     filedir2 = 'datav2/'
 
-    filedict1 = add_file_value(get_file_md5, filedir1)
-    filedict2 = add_file_value(get_file_md5, filedir2)
+    filedict1 = add_file_value(with_md5, filedir1)
+    filedict2 = add_file_value(with_md5, filedir2)
 
     for key1, value1 in filedict1.items():
         for key2, value2 in filedict2.items():
@@ -31,4 +31,4 @@ def check_overlappedfile_by_filesize():
                 os.remove(filedir2+key2)
 
 if __name__ == '__main__':
-    check_overlappedfile_by_filesize()
+    check_duplicate_files()
