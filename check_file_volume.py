@@ -3,8 +3,8 @@ import os
 import os.path
 import hashlib
 
-def add_file_value(func,filedir,filelist):
-    return {item : func(filedir+item) for item in filelist}
+def add_file_value(func,filedir):
+    return {item : func(filedir+item) for item in os.listdir(filedir)}
 
 def get_filesize(filepath):
     return os.path.getsize(filepath)
@@ -19,11 +19,9 @@ def get_file_md5(filepath):
 def check_overlappedfile_by_filesize():
     filedir1 = 'csvdatav1/'
     filedir2 = 'csvdatav2/'
-    filelist1 = os.listdir(filedir1)
-    filelist2 = os.listdir(filedir2)
 
-    filedict1 = add_file_value(get_file_md5, filedir1, filelist1)
-    filedict2 = add_file_value(get_file_md5, filedir2, filelist2)
+    filedict1 = add_file_value(get_file_md5, filedir1)
+    filedict2 = add_file_value(get_file_md5, filedir2)
 
     for key1, value1 in filedict1.items():
         for key2, value2 in filedict2.items():
